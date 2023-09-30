@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h1>Результат поиска:</h1>
+<ul>
+  {% for post in object_list %}
+    {% if category and category not in post.categories %}
+    {% endif %}
+    <li>
+      <a href="{% url 'some_news' post.pk %}">{{ post.title }}</a>, {{ post.text }}, {{ post.time_in }}, {{ post.type }}, {{ post.categories }}
+    </li>
+{% endfor %}
+</ul>
+{% endblock content %}
